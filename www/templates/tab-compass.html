@@ -1,0 +1,98 @@
+<ion-view view-title="Compass">
+  <ion-content class ="padding">
+    <button class="button" ng-click="toggleTrainingMode()">Train</button>
+
+    <button class="button" ng-click="toggleCompassMode()">{{  MODES[compassMode] }}</button>
+
+    <div class="training" ng-hide="!isTraining">
+      <button class="button" ng-click="setTrainingDir('N')">Face North</button>
+      <button class="button" ng-click="setTrainingDir('E')">Face East</button>
+      <button class="button" ng-click="setTrainingDir('W')">Face West</button>
+      <button class="button" ng-click="setTrainingDir('S')">Face South</button>
+
+      <div class="compass">
+        <div>
+          {{ heading.magneticHeading }} {{ cDirectionMagnetic }} : {{ trainingDir }}
+        </div>
+        <div>
+          {{ heading.trueHeading }} {{ cDirectionTrue }} : {{ trainingDir }}
+        </div>
+      </div>
+
+      <div ng-hide="!trainingDir">
+        {{ cDirection === trainingDir }}
+      </div>
+    </div>
+    <div class="compass-container" ng-hide="isTraining">
+      <div>
+        <div id="direction"> Direction: {{ cDirection }}
+      </div>
+      <div id="debug">
+          <div class="heading">
+              Geolocation
+          </div>
+
+          <div id="geolocation">
+            Latitude: {{ position.coords.latitude }}
+            <br/>
+            Longitude: {{ position.coords.longitude }}
+          </div>
+
+          <div class="heading">
+            Compass
+          </div>
+
+          <div class="compass">
+          {{ heading.magneticHeading }} {{ cDirectionMagnetic }} : {{ trainingDir }}
+          <br/>
+          {{ heading.trueHeading }} {{ cDirectionTrue }} : {{ trainingDir }}
+          </div>
+
+          <div class="heading">
+              Accelerometer
+          </div>
+
+          <!-- <div id="accelerometer">
+            Acceleration X: ={{ acceleration.x }} 
+            <br />
+            Acceleration Y: ={{ acceleration.y }}
+            <br />
+            Acceleration Z: ={{ acceleration.z }}
+          </div>
+          -->
+          <div class="heading">
+              Log
+          </div>
+
+          <div id="log">{{ log }}</div>
+      </div>
+    </div>
+    
+  </ion-content>
+  <!-- <ion-content class="padding">
+    <div class="list card">
+      <div class="item item-divider">Recent Updates</div>
+      <div class="item item-body">
+        <div>
+          There is a fire in <b>sector 3</b>
+        </div>
+      </div>
+    </div>
+    <div class="list card">
+      <div class="item item-divider">Health</div>
+      <div class="item item-body">
+        <div>
+          You ate an apple today!
+        </div>
+      </div>
+    </div>
+    <div class="list card">
+      <div class="item item-divider">Upcoming</div>
+      <div class="item item-body">
+        <div>
+          You have <b>29</b> meetings on your calendar tomorrow.
+        </div>
+      </div>
+    </div>
+  </ion-content>  -->
+</ion-view>
